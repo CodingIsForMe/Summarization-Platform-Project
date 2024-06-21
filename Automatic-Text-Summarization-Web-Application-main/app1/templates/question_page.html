@@ -1,0 +1,61 @@
+{% extends "base.html" %} 
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  {% block head %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/show.css' %}">
+    {% block title %}
+      <title>Question Page</title>
+    {% endblock title %}
+  </head>
+  {% endblock head %}
+  <body>
+    {% block content %}
+    <div class="container">
+      <h2 class="center" >Ask Your Question</h2>
+      <form method="post" action="{% url 'answer_generation' %}">
+          {% csrf_token %}
+          <textarea name="question_text" rows="10"></textarea>
+          <br>
+          <button type="submit" class="custom-btn">Proceed to Answer Page</button>
+      </form>
+    </div>
+
+
+    {% endblock %}
+    {% block extra_content %}
+    
+    {% endblock %}
+
+
+
+
+
+
+
+    
+    {% block script %}
+    <script>
+        // Automatically close notifications after 5 seconds
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                var notifications = document.querySelectorAll('.notification');
+                notifications.forEach(function (notification) {
+                    notification.remove();
+                });
+            }, 2000); // Adjust the time in milliseconds (e.g., 2000 for 2 seconds)
+
+            // Scroll to the text section
+            var textSection = document.querySelector('.container');
+            if (textSection) {
+                textSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+    {% endblock script %}
+  </body>
+</html>

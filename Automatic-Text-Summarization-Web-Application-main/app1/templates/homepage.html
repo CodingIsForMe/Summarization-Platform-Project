@@ -1,0 +1,56 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en"> 
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
+      <title>HTS DSP</title>
+    </head>
+    <body>
+        <header class="header">
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'howitworks' %}">How It Works</a></li>
+                </ul>
+            </nav>
+        </header>
+            
+        <div class="container">
+            <h1>Welcome to Our Platform</h1>
+            <p>Use our platform to upload, process, and summarize your text and audio files. Log in to get the full user experience!</p>
+        </div>
+
+        <section  class="flexSection lastSection1">
+            <div class="form-container">
+                <form method="POST" class="custom-form" action="{% url 'upload_document' %}" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  
+                  <label class = "form-label">
+                    <h2>Enter your Text</h2>
+                  <textarea id="textarea" name="textarea" rows="4" cols="50" placeholder="Enter your text here"></textarea>
+                  </label>
+  
+                  <label class="form-label">
+                  <h2>Upload your Document</h2>
+                  <input name="document" type="file" class="form-control" />
+                  </label>
+      
+                  <div>
+                  <button type="submit" class="custom-btn">Upload</button>
+                  </div>
+                </form>
+            </div>
+        </section>
+            
+        <footer class="footer">
+            <p>&copy; 2024 Our Platform. All rights reserved.</p>
+            <!-- <p>Contact us at <a href="mailto:support@ourplatform.com">support@ourplatform.com</a></p> -->
+            <p>Contact us at <a href="mailto:chukwudi.justin@stu.cu.edu.ng">chukwudi.justin@stu.cu.edu.ng</a></p>
+        </footer>
+    </body>
+
+</html>
